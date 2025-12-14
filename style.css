@@ -1,65 +1,73 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-body{
-    font-family: sans-serif;
-    background-color: aliceblue;
-    display: flex;
-    justify-content: center;
-    min-height: 100vh;
-    align-items: center;
-}
-.container{
-    text-align: center;
-    width: 100%;
-    padding: 1.2rem;
-}
-h1{
-    color: darkgrey;
-    margin-bottom: 20px;
-    font-size: 2rem;
-}
-.board{
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    width: 100%;
-    max-width: 1200px;
-    gap: 20px;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-.list{
-    background-color: white;
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    width: 300px;
-    min-height: 400px;
+body {
+  font-family: sans-serif;
+  background-color: #f7f9fc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
-list h2{
-    color: grey;
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
+.container {
+  text-align: center;
+  width: 100%;
+  padding: 1.2rem;
 }
-.card{
-    background-color: #f4f4f4;
-    padding: 1rem;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
-    margin-top: 20px;
-    cursor: grab;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    transition: transform 0.2s, box-shadow 0.2s;
+
+h1 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 2rem;
 }
-.card:active{
-    cursor: grabbing;
-    transform: scale(1.05);
-    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+
+.board {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 20px;
 }
-.list.over{
-    background-color: #450909;
+
+.list {
+  background-color: #e3e4e8;
+  padding: 1rem;
+  border-radius: 8px;
+  width: 30%;
+  min-height: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+.list h2 {
+  color: #555;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.card {
+  background-color: white;
+  color: #333;
+  padding: 1rem;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  cursor: grab;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:active {
+  cursor: grabbing;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.list.over {
+  background-color: #d1d3d8;
+}
+
