@@ -1,33 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kanban Board</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="container">
-                    <h1>kanban board</h1>
-        <div class="board">
-        <!-- list1 -->
-        <div class="list" id="list1">
-            <h2>todo</h2>
-            <div class="card" draggable="true" id="card1">Wash Dishes</div>
-            <div class="card" draggable="true" id="card2">Buy Groceries</div>
+      <button id="toggleTheme" class="theme-toggle">🌙 Toggle Dark Mode</button>
+  <div class="container">
+    <h1>Kanban To-Do board</h1>
+
+
+    <div class="board">
+
+      <!-- list1 -->
+      <div class="list" id="list1">
+        <h2>todo</h2>
+        <div class="card" draggable="true" id="card1">Wash Dishes</div>
+        <div class="card" draggable="true" id="card2">Buy Groceries</div>
+        <div class="add-card">
+          <input type="text" class="card-input" placeholder="New task..." />
+          <select class="card-priority">
+            <option value="low">Low</option>
+            <option value="medium" selected>Medium</option>
+            <option value="high">High</option>
+          </select>
+          <button class="add-btn">+ Add Card</button>
         </div>
-        <!-- list2 -->
-        <div class="list" id="list2">
-            <h2>in progress</h2>
-            <div class="card" draggable="true" id="card3">Learn to Code</div>
+      </div>
+
+      <!-- list2 -->
+      <div class="list" id="list2">
+        <h2>in progress</h2>
+        <div class="card" draggable="true" id="card3">Learn to Code</div>
+        <div class="add-card">
+          <input type="text" class="card-input" placeholder="New task..." />
+          <select class="card-priority">
+            <option value="low">Low</option>
+            <option value="medium" selected>Medium</option>
+            <option value="high">High</option>
+          </select>
+          <button class="add-btn">+ Add Card</button>
         </div>
-        <!-- list3 -->
-        <div class="list" id="list3">
-            <h2>done</h2>
-            <div class="card" draggable="true" id="card4">Do Laundry</div>
+      </div>
+
+      <!-- list3 -->
+      <div class="list" id="list3">
+        <h2>done</h2>
+        <div class="card" draggable="true" id="card4">Do Laundry</div>
+        <div class="add-card">
+          <input type="text" class="card-input" placeholder="New task..." />
+          <select class="card-priority">
+            <option value="low">Low</option>
+            <option value="medium" selected>Medium</option>
+            <option value="high">High</option>
+          </select>
+          <button class="add-btn">+ Add Card</button>
         </div>
-        </div>
+      </div>
+
     </div>
-    <script src="script.js"></script>
+  </div>
+  <!-- Card Modal -->
+<div id="cardModal" class="modal hidden">
+  <div class="modal-content">
+    <span class="close-btn">✖</span>
+    <h2 contenteditable="true" id="modalTitle">Card Title</h2>
+    <textarea id="modalDescription" placeholder="Add a description..."></textarea>
+    <button id="saveCardDetails">💾 Save</button>
+  </div>
+</div>
+
+  <script src="script.js"></script>
 </body>
 </html>

@@ -1,3 +1,31 @@
+/* ========================================
+   Theme Variables
+======================================== */
+:root {
+  --bg: #f8f9fc;
+  --card-bg: #fffdfb;
+  --text: #1a202c;
+  --list-bg: #e5e7eb;
+  --button-bg: #3A0CA3;
+  --button-text: #ffffff;
+  --input-bg: #e5e7eb;
+  --delete-btn: #e53935;
+}
+
+body.dark {
+  --bg: #1e1e2f;
+  --card-bg: #2e2e3e;
+  --text: #f5f5f5;
+  --list-bg: #3a3a4d;
+  --button-bg: #6C63FF;
+  --button-text: #ffffff;
+  --input-bg: #44455a;
+  --delete-btn: #ff6b6b;
+}
+
+/* ========================================
+   Reset & Base
+======================================== */
 * {
   padding: 0;
   margin: 0;
@@ -5,26 +33,52 @@
 }
 
 body {
-  font-family: sans-serif;
-  background-color: #f7f9fc;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .container {
   text-align: center;
   width: 100%;
-  padding: 1.2rem;
+  padding: 1.5rem;
 }
 
 h1 {
-  color: #333;
+  color: var(--button-bg);
   margin-bottom: 20px;
-  font-size: 2rem;
+  font-size: 2.5rem;
+  letter-spacing: 1px;
 }
 
+/* Dark Mode Toggle Button */
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-weight: bold;
+  z-index: 999;
+  transition: background-color 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background-color: #5f27cd;
+}
+
+/* ========================================
+   Board Layout
+======================================== */
 .board {
   display: flex;
   justify-content: space-around;
@@ -32,42 +86,282 @@ h1 {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  gap: 20px;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+/* Colorful List Themes */
+#list1 {
+  background-color: #BDE0FE;
+}
+#list2 {
+  background-color: #FFF3B0;
+}
+#list3 {
+  background-color: #C8FACC;
 }
 
 .list {
-  background-color: #e3e4e8;
+  background-color: var(--list-bg);
   padding: 1rem;
-  border-radius: 8px;
+  border-radius: 12px;
   width: 30%;
-  min-height: 400px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  min-width: 280px;
+  min-height: 450px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
 }
 
 .list h2 {
-  color: #555;
+  color: var(--button-bg);
   margin-bottom: 1rem;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
+/* ========================================
+   Cards
+======================================== */
 .card {
-  background-color: white;
-  color: #333;
+  position: relative;
+  background-color: var(--card-bg);
+  color: var(--text);
   padding: 1rem;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   border-radius: 8px;
   cursor: grab;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: fadeIn 0.3s ease;
 }
 
 .card:active {
   cursor: grabbing;
-  transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(1.03);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+/* Priority Variants */
+.card.low {
+  background-color: #D4EDDA;
+  border-left: 5px solid #28a745;
+  color: var(--text);
+}
+
+.card.medium {
+  background-color: #FFF3CD;
+  border-left: 5px solid #ffc107;
+  color: var(--text);
+}
+
+.card.high {
+  background-color: #F8D7DA;
+  border-left: 5px solid #dc3545;
+  color: var(--text);
+}
+
+
+/* Highlighted Drop Area */
 .list.over {
-  background-color: #d1d3d8;
+  border: 2px dashed var(--button-bg);
 }
 
+/* ========================================
+   Card Creator
+======================================== */
+.add-card {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.add-card input.card-input {
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: var(--input-bg);
+  color: var(--text);
+  outline: none;
+  transition: box-shadow 0.2s ease;
+}
+
+.add-card input.card-input:focus {
+  box-shadow: 0 0 0 2px var(--button-bg);
+}
+
+.add-card button.add-btn {
+  padding: 10px;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.add-card button.add-btn:hover {
+  background-color: #5F27CD;
+}
+
+.add-card select.card-priority {
+  padding: 10px;
+  border-radius: 6px;
+  background-color: var(--input-bg);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  color: var(--text);
+  border: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg%20viewBox='0%200%204%205'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cpath%20d='M2%200L0%202h4L2%200z'%20fill='%23000'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 8px;
+}
+
+/* ========================================
+   Delete Button
+======================================== */
+.delete-btn {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  font-size: 14px;
+  background-color: transparent;
+  border: none;
+  color: var(--delete-btn);
+  cursor: pointer;
+  font-weight: bold;
+  user-select: none;
+  transition: transform 0.2s ease;
+}
+
+.delete-btn:hover {
+  transform: translateY(-50%) scale(1.3);
+}
+
+/* ========================================
+   Animation & Responsive
+======================================== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@media (max-width: 768px) {
+  .board {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .list {
+    width: 90%;
+    margin-bottom: 20px;
+  }
+}
+/* ========================================
+   Dark Mode Priority Fix
+======================================== */
+body.dark .card.low {
+  background-color: #1f3d2b;      /* dark green */
+  border-left: 5px solid #2ecc71;
+  color: #e6fff2;
+}
+
+body.dark .card.medium {
+  background-color: #3d341f;      /* dark yellow/brown */
+  border-left: 5px solid #f1c40f;
+  color: #fff7d6;
+}
+
+body.dark .card.high {
+  background-color: #3d1f1f;      /* dark red */
+  border-left: 5px solid #e74c3c;
+  color: #ffe6e6;
+}
+
+
+/* Modal Base */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Hidden class */
+.hidden {
+  display: none;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: var(--card-bg);
+  color: var(--text);
+  width: 90%;
+  max-width: 500px;
+  padding: 1.5rem;
+  border-radius: 12px;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  border-bottom: 1px solid var(--input-bg);
+  padding-bottom: 0.5rem;
+}
+
+.modal-content textarea {
+  width: 100%;
+  height: 120px;
+  margin-bottom: 1rem;
+  padding: 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--input-bg);
+  color: var(--text);
+  resize: vertical;
+}
+
+.modal-content button {
+  padding: 10px 16px;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.modal-content button:hover {
+  background-color: #5f27cd;
+}
+
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  font-size: 20px;
+  cursor: pointer;
+  color: var(--delete-btn);
+}
